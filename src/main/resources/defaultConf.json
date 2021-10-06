@@ -1,0 +1,8 @@
+{
+  "bot_token":"",
+  "postgres_user":"",
+  "postgres_password":"",
+  "redis_user":"",
+  "redis_password":"",
+  "default_prefix":"+"
+}

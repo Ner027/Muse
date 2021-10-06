@@ -1,0 +1,1 @@
+SELECT prefix FROM guild_data WHERE guild_id = ?

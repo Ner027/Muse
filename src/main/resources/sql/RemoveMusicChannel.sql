@@ -1,0 +1,1 @@
+UPDATE guild_data SET music_id = null WHERE guild_id = ?
