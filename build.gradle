@@ -15,7 +15,7 @@ jar {
 
 mainClassName = 'com.tropigainc.muse.Main'
 version '1.0'
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 
 repositories {
@@ -41,6 +41,9 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.25'
     implementation 'com.sedmelluq:lavaplayer:1.3.77'
 
+
+
 }
 
 compileJava.options.encoding = 'UTF-8'
+targetCompatibility = JavaVersion.VERSION_11

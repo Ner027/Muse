@@ -1,1 +1,1 @@
-INSERT INTO guild_data (guild_id,prefix) values (?,?) ON CONFLICT DO UPDATE SET prefix = ?
+INSERT INTO guild_data (guild_id,prefix) values (?,?) ON CONFLICT (guild_id) DO UPDATE SET prefix = ?

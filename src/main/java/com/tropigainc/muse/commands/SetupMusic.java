@@ -1,8 +1,8 @@
 package com.tropigainc.muse.commands;
 
 import com.tropigainc.muse.data.DataManager;
+import com.tropigainc.muse.util.DiscordUtil;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class SetupMusic implements ICommand
@@ -18,6 +18,7 @@ public class SetupMusic implements ICommand
         g.createTextChannel("muse-requests").queue(textChannel ->
         {
             DataManager.insertMusicId(g,textChannel.getIdLong());
+            DiscordUtil.mainMessage(textChannel);
         });
     }
 

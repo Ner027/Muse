@@ -1,10 +1,12 @@
 package com.tropigainc.muse.util;
 
 import com.tropigainc.muse.Manager;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,6 +32,7 @@ public class Util
         return strBuilder.toString();
     }
 
+
     public static boolean isUrl(String url)
     {
         try
@@ -53,8 +56,5 @@ public class Util
         return splitMessage(event.getMessage().getContentRaw());
     }
 
-    public static String handleTrack(String key)
-    {
-        return null;
-    }
+
 }

@@ -17,14 +17,21 @@ public class Join implements ICommand
         if (member == null) return;
 
         AudioManager manager = event.getGuild().getAudioManager();
-        if (manager.isConnected())
-            DiscordUtil.sendWarning(event.getChannel(),"Muse is already connected to a voice channel!", Level.FINE);
 
         GuildVoiceState vs = member.getVoiceState();
         if (vs == null) return;
 
+        if (manager.isConnected() && manager.getConnectedChannel() != vs.getChannel())
+        {
+            DiscordUtil.sendWarning(event.getChannel(),"Muse is already connected to a voice channel!", Level.FINE);
+            return;
+        }
+
         if (!vs.inVoiceChannel())
+        {
             DiscordUtil.sendWarning(event.getChannel(),"Please join a voice channel first!",Level.FINE);
+            return;
+        }
 
         manager.openAudioConnection(vs.getChannel());
     }

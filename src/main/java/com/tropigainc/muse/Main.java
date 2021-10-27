@@ -4,6 +4,7 @@ import com.tropigainc.muse.commands.CommandManager;
 import com.tropigainc.muse.data.DataManager;
 import com.tropigainc.muse.data.SettingsManager;
 import com.tropigainc.muse.discord.EventListener;
+import com.tropigainc.muse.util.YoutubeUtil;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 

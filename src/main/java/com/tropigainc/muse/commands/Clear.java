@@ -14,8 +14,7 @@ public class Clear implements ICommand
     public void exec(GuildMessageReceivedEvent event, Object... params)
     {
         Member member = event.getMember();
-        if (member == null)
-            return;
+        if (member == null) return;
 
         if (!member.hasPermission(Permission.MESSAGE_MANAGE))
         {
@@ -39,7 +38,11 @@ public class Clear implements ICommand
                 DiscordUtil.sendWarning(event.getChannel(),"You can only delete up to 25 messages!",Level.FINE);
                 return;
             }
-            event.getChannel().getHistory().retrievePast(amt).queue(s -> s.forEach(m -> m.delete().queue()));
+            event.getChannel().getHistory().retrievePast(amt).queue(s -> s.forEach(m ->
+            {
+                try {m.delete().queue();}
+                catch (Exception ignored){}
+            }));
         }
         catch (NumberFormatException ignored)
         {

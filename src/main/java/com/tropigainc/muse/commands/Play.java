@@ -1,8 +1,12 @@
 package com.tropigainc.muse.commands;
 
 import com.tropigainc.muse.audio.AudioManager;
+import com.tropigainc.muse.util.DiscordUtil;
 import com.tropigainc.muse.util.Util;
+import com.tropigainc.muse.util.YoutubeUtil;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+
+import java.util.logging.Level;
 
 public class Play implements ICommand
 {
@@ -19,8 +23,15 @@ public class Play implements ICommand
         if (hasPfx) title = title.substring(title.indexOf(' ') + 1);
 
         if (Util.isUrl(title))
+        {
             AudioManager.getInstance().loadAndQueue(title,event.getGuild());
-        else AudioManager.getInstance().loadAndQueue(Util.handleTrack(title), event.getGuild());
+        }
+        else
+        {
+            String url = YoutubeUtil.searchTrack(title);
+            if (url == null) DiscordUtil.sendWarning(event.getChannel(),"Something went wrong while trying to load your track!", Level.WARNING);
+            AudioManager.getInstance().loadAndQueue(url,event.getGuild());
+        }
 
     }
 
